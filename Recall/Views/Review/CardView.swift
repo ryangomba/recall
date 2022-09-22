@@ -1,21 +1,51 @@
 import SwiftUI
 
+struct CardAttachmentView: View {
+    var attachment: CardAttachment
+
+    var body: some View {
+        AsyncImage(url: URL(string: attachment.src)) { image in
+            image.resizable().scaledToFit()
+        } placeholder: {
+            Color.gray
+        }
+        .aspectRatio(CGFloat(attachment.aspectRatio ?? 1), contentMode: .fit)
+    }
+}
+
+struct CardFaceView: View {
+    var cardFace: CardFace
+
+    var body: some View {
+        VStack {
+            Text(cardFace.text)
+                .multilineTextAlignment(.center)
+            if let attachment = cardFace.attachment {
+                CardAttachmentView(attachment: attachment)
+            }
+        }
+    }
+}
+
 struct CardView: View {
     var card: Card
     @Binding var flipped: Bool
 
     var body: some View {
-        VStack {
-            Text(card.front)
-                .multilineTextAlignment(.center)
-            if flipped {
-                Text("---")
-                    .padding()
-                Text(card.back)
-                    .multilineTextAlignment(.center)
+        GeometryReader { geometry in
+            ScrollView {
+                VStack {
+                    CardFaceView(cardFace: card.front)
+                    if flipped {
+                        Text("---")
+                            .padding()
+                        CardFaceView(cardFace: card.back)
+                    }
+                }
+                .padding()
+                .frame(minHeight: geometry.size.height)
             }
         }
-        .padding()
         .frame(width: 280, height: 420, alignment: .center) // TODO: don't hardcode
         .background(Color.customBackgroundSecondary) // necessary to capture taps
         .cornerRadius(20)

@@ -66,14 +66,35 @@ class FirestoreCardStore: CardStore {
         }
     }
 
+    private func attachmentFromData(_ data: [String: Any]) -> CardAttachment {
+        return CardAttachment(
+            type: data["type"] as! String,
+            src: data["src"] as! String,
+            aspectRatio: data["aspectRatio"] as! Float?
+        )
+    }
+
+    private func cardFaceFromData(_ data: Any) -> CardFace {
+        if let text = data as? String {
+            return CardFace(text: text)
+        }
+        let map = data as! [String: Any]
+        let text = map["text"] as! String
+        var attachment: CardAttachment?
+        if let attachmentData = map["attachment"] as? [String: Any] {
+            attachment = attachmentFromData(attachmentData)
+        }
+        return CardFace(text: text, attachment: attachment)
+    }
+
     private func cardFromDocument(_ document: DocumentSnapshot) -> Card {
         guard let data = document.data() else {
             fatalError("No data for document")
         }
         let userID = data["userID"] as! String
         let createdAt = data["createdAt"] as? Timestamp ?? Timestamp()
-        let front = data["front"] as! String
-        let back = data["back"] as! String
+        let front = cardFaceFromData(data["front"]!)
+        let back = cardFaceFromData(data["back"]!)
         let nextReviewAt = data["nextReviewAt"] as! Timestamp
         let tags = data["tags"] as? [String] ?? []
         let reviewDatas = data["reviews"] as? [[String: Any]] ?? []
@@ -96,12 +117,33 @@ class FirestoreCardStore: CardStore {
         )
     }
 
+    private func documentDataFromCardAttachment(_ attachment: CardAttachment) -> [String: Any] {
+        var data: [String: Any] = [
+            "type": attachment.type,
+            "src": attachment.src,
+        ]
+        if let aspectRatio = attachment.aspectRatio {
+            data["aspectRatio"] = aspectRatio
+        }
+        return data
+    }
+
+    private func documentDataFromCardFace(_ cardFace: CardFace) -> [String: Any] {
+        var data: [String: Any] = [
+            "text": cardFace.text,
+        ]
+        if let attachment = cardFace.attachment {
+            data["attachment"] = documentDataFromCardAttachment(attachment)
+        }
+        return data
+    }
+
     private func documentDataFromCard(_ card: Card) -> [String: Any] {
         var data: [String: Any] = [
             "userID": card.userID,
             "createdAt": Timestamp(date: card.createdAt),
-            "front": card.front,
-            "back": card.back,
+            "front": documentDataFromCardFace(card.front),
+            "back": documentDataFromCardFace(card.back),
             "nextReviewAt": Timestamp(date: card.nextReviewAt),
             "tags": card.tags.sorted(),
             "reviews": card.reviews.map({ review in

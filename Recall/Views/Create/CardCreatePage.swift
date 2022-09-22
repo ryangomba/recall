@@ -31,8 +31,8 @@ struct CardCreatePage: View {
             tags: formData.isDraft ? ["draft"] : [],
             reversed: formData.reversed
         )
-        formData.front = ""
-        formData.back = ""
+        formData.front = CardFace(text: "")
+        formData.back = CardFace(text: "")
         formData.reversed = false
     }
 }

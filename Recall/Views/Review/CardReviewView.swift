@@ -13,7 +13,9 @@ struct CardReviewView: View {
                 Button(action: onEditButtonPressed) {
                     Image(systemName: "square.and.pencil")
                         .padding()
+                        .contentShape(Rectangle()) // for Mac
                 }
+                .buttonStyle(.plain) // for Mac
             }
             Spacer()
             HStack(alignment: .center, spacing: 44) {

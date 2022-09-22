@@ -3,14 +3,24 @@ import Foundation
 class CardService {
 
     static func createDraft(text: String) {
-        return createCard(front: text, back: "", tags: ["draft"], reversed: false)
+        return createCard(
+            front: CardFace(text: text),
+            back: CardFace(text: ""),
+            tags: ["draft"],
+            reversed: false
+        )
     }
 
     static func createCard(front: String, back: String) {
-        return createCard(front: front, back: back, tags: [], reversed: false)
+        return createCard(
+            front: CardFace(text: front),
+            back: CardFace(text: back),
+            tags: [],
+            reversed: false
+        )
     }
 
-    static func createCard(front: String, back: String, tags: Set<String>, reversed: Bool) {
+    static func createCard(front: CardFace, back: CardFace, tags: Set<String>, reversed: Bool) {
         var card = Card(
             id: UUID().uuidString,
             userID: env.sessionStore.user!.id,

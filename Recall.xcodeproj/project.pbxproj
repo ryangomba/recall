@@ -27,6 +27,8 @@
 		945742C7285119D3000F7604 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 945742C6285119D3000F7604 /* FirebaseFirestore */; };
 		945742C9285119DB000F7604 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 945742C8285119DB000F7604 /* FirebaseStorage */; };
 		945742CB285119E0000F7604 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 945742CA285119E0000F7604 /* FirebaseStorageCombine-Community */; };
+		945742CD2851529E000F7604 /* FirebaseFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945742CC2851529E000F7604 /* FirebaseFileStore.swift */; };
+		945742CF28519F28000F7604 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945742CE28519F28000F7604 /* FileService.swift */; };
 		94BE481D27431F0C00020FD2 /* Date+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BE481C27431F0C00020FD2 /* Date+Relative.swift */; };
 		94BE483E274323AD00020FD2 /* Date+RelativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BE48292743200100020FD2 /* Date+RelativeTests.swift */; };
 		94DA1A8C273303E4008C0D3C /* CardReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1A8B273303E4008C0D3C /* CardReviewView.swift */; };
@@ -113,6 +115,8 @@
 		940CC542273B5948008AD1B3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		940CC54427409FA2008AD1B3 /* BadgeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeManager.swift; sourceTree = "<group>"; };
 		940CC5462740AD77008AD1B3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		945742CC2851529E000F7604 /* FirebaseFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFileStore.swift; sourceTree = "<group>"; };
+		945742CE28519F28000F7604 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		94BE481C27431F0C00020FD2 /* Date+Relative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Relative.swift"; sourceTree = "<group>"; };
 		94BE48292743200100020FD2 /* Date+RelativeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+RelativeTests.swift"; sourceTree = "<group>"; };
 		94BE4833274322DA00020FD2 /* RecallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +285,7 @@
 		94DBEE3D27306815000071D8 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				945742CC2851529E000F7604 /* FirebaseFileStore.swift */,
 				94DFFA6D2739F1A300F18F88 /* CardStore */,
 			);
 			path = Stores;
@@ -371,6 +376,7 @@
 			children = (
 				94DFFA7A273A107A00F18F88 /* CardService.swift */,
 				94DBEE44273075C2000071D8 /* CardQuery.swift */,
+				945742CE28519F28000F7604 /* FileService.swift */,
 				940CC54427409FA2008AD1B3 /* BadgeManager.swift */,
 			);
 			path = Services;
@@ -590,6 +596,7 @@
 				94DFFA80273A1F8300F18F88 /* Colors.swift in Sources */,
 				94DFFA632739BA6D00F18F88 /* CardListItem.swift in Sources */,
 				940CC543273B5948008AD1B3 /* User.swift in Sources */,
+				945742CD2851529E000F7604 /* FirebaseFileStore.swift in Sources */,
 				940171EC272B541E008294CE /* CardEditPage.swift in Sources */,
 				940171F0272B56BC008294CE /* ReviewPage.swift in Sources */,
 				940171F3272BC23B008294CE /* MemoryCardStore.swift in Sources */,
@@ -609,6 +616,7 @@
 				94BE481D27431F0C00020FD2 /* Date+Relative.swift in Sources */,
 				94DFFA76273A0E9B00F18F88 /* Environment.swift in Sources */,
 				940CC541273B4CA4008AD1B3 /* AuthPage.swift in Sources */,
+				945742CF28519F28000F7604 /* FileService.swift in Sources */,
 				94DA1A8C273303E4008C0D3C /* CardReviewView.swift in Sources */,
 				94DFFA6C2739ECBF00F18F88 /* FirestoreCardStore.swift in Sources */,
 				94DFFA83273A251000F18F88 /* Sidebar.swift in Sources */,

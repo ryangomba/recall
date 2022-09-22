@@ -6,7 +6,7 @@ struct CardListItem: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text(card.front)
+                Text(card.front.text)
                     .lineLimit(1)
                 if !card.tags.isEmpty {
                     Text(card.tags.map({ tag in

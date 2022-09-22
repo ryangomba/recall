@@ -42,7 +42,7 @@ func queryCardArray(cards allCards: [Card], params: CardQueryParams) -> [Card] {
     }
     if (!params.searchText.isEmpty) {
         cards = cards.filter { card in
-            let cardText = "\(card.front.lowercased()) \(card.back.lowercased())"
+            let cardText = "\(card.front.text.lowercased()) \(card.back.text.lowercased())"
             return cardText.contains(params.searchText.lowercased())
         }
     }
