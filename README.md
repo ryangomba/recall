@@ -21,5 +21,5 @@ A spaced repetition app for iOS and macOS ([Spaced repetition memory systems mak
 ### Syncing
 
 - Cards are synced via Firebase. Why Firebase? It works and it has good offline support.
-- Note: you'll need to add a `GoogleService-Info.plist` to the `Recall` directory to run the app.
+- Note: you'll need to add a `GoogleService-Info.plist` to the `Recall` directory, or a `GOOGLE_SERVICE_PLIST` environment variable with the contents of this file, to run the app.
 

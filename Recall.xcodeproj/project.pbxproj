@@ -34,7 +34,7 @@
 		94DA1AAB27331268008C0D3C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DA1A95273310F6008C0D3C /* SwiftUI.framework */; };
 		94DA1AAE27331268008C0D3C /* RecallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1AAD27331268008C0D3C /* RecallWidget.swift */; };
 		94DA1AB027331268008C0D3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1AAF27331268008C0D3C /* Assets.xcassets */; };
-		94DA1AB427331268008C0D3C /* RecallWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 94DA1AA927331268008C0D3C /* RecallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		94DA1AB427331268008C0D3C /* RecallWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 94DA1AA927331268008C0D3C /* RecallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		94DBEE3C273067F7000071D8 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DBEE3B273067F7000071D8 /* Card.swift */; };
 		94DBEE43273072F1000071D8 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DBEE42273072F1000071D8 /* Review.swift */; };
 		94DBEE45273075C2000071D8 /* CardQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DBEE44273075C2000071D8 /* CardQuery.swift */; };
@@ -51,7 +51,7 @@
 		94DFFABC273A390900F18F88 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 94DFFABB273A390900F18F88 /* SwiftUIX */; };
 		94DFFABE273B1D7100F18F88 /* CardForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DFFABD273B1D7100F18F88 /* CardForm.swift */; };
 		94E9038F27435022009C693F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9038E27435022009C693F /* ShareViewController.swift */; };
-		94E9039627435022009C693F /* RecallShareAction.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 94E9038C27435022009C693F /* RecallShareAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		94E9039627435022009C693F /* RecallShareAction.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 94E9038C27435022009C693F /* RecallShareAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		94E9039D2743539D009C693F /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9039C2743539D009C693F /* ShareView.swift */; };
 		94E903A027436D11009C693F /* DraftsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9039F27436D11009C693F /* DraftsPage.swift */; };
 /* End PBXBuildFile section */
@@ -81,16 +81,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		94DA1AA4273310F7008C0D3C /* Embed App Extensions */ = {
+		94DA1AA4273310F7008C0D3C /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				94DA1AB427331268008C0D3C /* RecallWidgetExtension.appex in Embed App Extensions */,
-				94E9039627435022009C693F /* RecallShareAction.appex in Embed App Extensions */,
+				94DA1AB427331268008C0D3C /* RecallWidgetExtension.appex in Embed Foundation Extensions */,
+				94E9039627435022009C693F /* RecallShareAction.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -420,10 +420,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 940171E2272A45FC008294CE /* Build configuration list for PBXNativeTarget "Recall" */;
 			buildPhases = (
+				94A9605828EFEF7B00EAA471 /* Replace GoogleService-Info.plist with environment variable "GOOGLE_SERVICE_PLIST" */,
 				940171D0272A45FB008294CE /* Sources */,
 				940171D1272A45FB008294CE /* Frameworks */,
 				940171D2272A45FB008294CE /* Resources */,
-				94DA1AA4273310F7008C0D3C /* Embed App Extensions */,
+				94DA1AA4273310F7008C0D3C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -505,7 +506,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					940171D3272A45FB008294CE = {
 						CreatedOnToolsVersion = 13.1;
@@ -580,6 +581,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		94A9605828EFEF7B00EAA471 /* Replace GoogleService-Info.plist with environment variable "GOOGLE_SERVICE_PLIST" */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Replace GoogleService-Info.plist with environment variable \"GOOGLE_SERVICE_PLIST\"";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Recall/GoogleService-Info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -z \"${GOOGLE_SERVICE_PLIST}\" ]]; then\n  echo \"No GOOGLE_SERVICE_PLIST environment variable found; skipping\"\nelse\n  echo \"Using GOOGLE_SERVICE_PLIST environment variable\"\n  echo \"$GOOGLE_SERVICE_PLIST\" > \"Recall/GoogleService-Info.plist\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		940171D0272A45FB008294CE /* Sources */ = {
@@ -804,7 +827,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryangomba.Recall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -839,7 +862,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryangomba.Recall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -918,7 +941,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.17;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryangomba.Recall.RecallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -948,7 +971,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.17;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryangomba.Recall.RecallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -976,7 +999,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.17;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryangomba.Recall.RecallShareAction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1003,7 +1026,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.17;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryangomba.Recall.RecallShareAction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
