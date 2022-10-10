@@ -10,15 +10,19 @@ struct Sidebar: View {
             Section {
                 NavigationLink(destination: ReviewPage(), tag: "review", selection: $selectedPage) {
                     Label(reviewCardQuery.cards.isEmpty ? "Review" : "Review (\(reviewCardQuery.cards.count))", systemImage: "calendar")
+                        .lineLimit(1)
                 }
                 NavigationLink(destination: DraftsPage(), tag: "drafts", selection: $selectedPage) {
                     Label(draftsCardQuery.cards.isEmpty ? "Drafts" : "Drafts (\(draftsCardQuery.cards.count))", systemImage: "pencil.tip.crop.circle")
+                        .lineLimit(1)
                 }
                 NavigationLink(destination: CardListPage(), tag: "list", selection: $selectedPage) {
                     Label("All cards", systemImage: "list.dash")
+                        .lineLimit(1)
                 }
                 NavigationLink(destination: SettingsPage(), tag: "settings", selection: $selectedPage) {
                     Label("Settings", systemImage: "gearshape")
+                        .lineLimit(1)
                 }
             }
         }
